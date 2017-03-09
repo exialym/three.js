@@ -77,7 +77,7 @@
 
 			var objects = [];
 
-			var amountOfParticles = 500000, maxDistance = Math.pow(120, 2);
+			var amountOfParticles = 5, maxDistance = Math.pow(120, 2);
 			var positions, alphas, particles, _particleGeom;
 
 			var clock = new THREE.Clock();
@@ -151,9 +151,9 @@
 				particles = new THREE.Points( _particleGeom, pointShaderMaterial );
 
 				for (var x = 0; x < amountOfParticles; x++) {
-					positions[ x * 3 + 0 ] = Math.random() * 1000;
-					positions[ x * 3 + 1 ] = Math.random() * 1000;
-					positions[ x * 3 + 2 ] = Math.random() * 1000;
+					positions[ x * 3 + 0 ] = Math.random() * 100;
+					positions[ x * 3 + 1 ] = Math.random() * 100;
+					positions[ x * 3 + 2 ] = Math.random() * 100;
 					alphas[x] = 1.0;
 				}
 
@@ -161,7 +161,9 @@
 				var measureStart = new Date().getTime();
 
 				// creating the kdtree takes a lot of time to execute, in turn the nearest neighbour search will be much faster
+				console.log(positions);
 				kdtree = new THREE.TypedArrayUtils.Kdtree( positions, distanceFunction, 3 );
+				console.log(positions);
 
 				console.log('TIME building kdtree', new Date().getTime() - measureStart);
 
